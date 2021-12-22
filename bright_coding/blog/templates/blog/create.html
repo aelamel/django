@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<!-- .container>.row>(.col-md-6>h1{Show article})+(.col-md-6>.text-end>a.btn.btn-link{Back to list}) -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Create article</h1>
+        </div>
+        <div class="col-md-6">
+            <div class="text-end"><a href="{%url 'articles_index'%}" class="btn btn-link">Back to list</a></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <form action="" method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group my-3">
+                    <label for="" class="form-label">{{field.label}}</label>
+                    {{field}}
+                </div>
+            {% endfor %}
+            <button class="btn btn-primary" type="submit">Create</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
